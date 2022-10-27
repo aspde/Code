@@ -1,6 +1,6 @@
-package create_thread_test;
+package thread_test;
 
-import create_thread.ExtendsThread;
+import thread.ExtendsThread;
 import org.junit.Test;
 
 public class ExtendsThreadTest {

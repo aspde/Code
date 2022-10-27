@@ -1,6 +1,6 @@
-package create_thread_test;
+package thread_test;
 
-import create_thread.ThreadPool;
+import thread.ThreadPool;
 import org.junit.Test;
 
 public class ThreadPoolTest {

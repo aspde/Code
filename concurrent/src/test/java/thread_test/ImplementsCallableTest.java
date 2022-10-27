@@ -1,6 +1,6 @@
-package create_thread_test;
+package thread_test;
 
-import create_thread.ImplementsCallable;
+import thread.ImplementsCallable;
 import org.junit.Test;
 
 import java.util.concurrent.ExecutionException;

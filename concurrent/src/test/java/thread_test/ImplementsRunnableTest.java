@@ -1,6 +1,6 @@
-package create_thread_test;
+package thread_test;
 
-import create_thread.ImplementsRunnable;
+import thread.ImplementsRunnable;
 import org.junit.Test;
 
 public class ImplementsRunnableTest {

@@ -1,4 +1,4 @@
-package create_thread;
+package thread;
 
 /**
  * 通过实现Runnable接口创建线程
