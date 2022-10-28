@@ -12,7 +12,7 @@ public class WaitNotifyTest {
 
     static class Producer implements Runnable{
 
-        private WaitNotifyBlockingQueue waitNotifyBlockingQueue;
+        private final WaitNotifyBlockingQueue waitNotifyBlockingQueue;
 
         public Producer(WaitNotifyBlockingQueue waitNotifyBlockingQueue){
             this.waitNotifyBlockingQueue = waitNotifyBlockingQueue;
@@ -22,7 +22,7 @@ public class WaitNotifyTest {
         public void run() {
             for (int i = 0; i < 100; i++) {
                 try{
-                    waitNotifyBlockingQueue.put();
+                    waitNotifyBlockingQueue.put(new Object());
                 } catch(InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -32,7 +32,7 @@ public class WaitNotifyTest {
 
     static class Consumer implements Runnable{
 
-        private WaitNotifyBlockingQueue waitNotifyBlockingQueue;
+        private final WaitNotifyBlockingQueue waitNotifyBlockingQueue;
 
         public Consumer(WaitNotifyBlockingQueue waitNotifyBlockingQueue){
             this.waitNotifyBlockingQueue = waitNotifyBlockingQueue;

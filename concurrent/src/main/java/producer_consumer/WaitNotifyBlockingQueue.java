@@ -7,20 +7,20 @@ import java.util.LinkedList;
  */
 public class WaitNotifyBlockingQueue {
 
-    private int maxSize;
+    private final int maxSize;
 
-    private LinkedList<Object> storage;
+    private final LinkedList<Object> storage;
 
     public WaitNotifyBlockingQueue(int maxSize){
         this.maxSize = maxSize;
-        storage = new LinkedList<Object>();
+        storage = new LinkedList<>();
     }
 
-    public synchronized void put() throws InterruptedException {
+    public synchronized void put(Object o) throws InterruptedException {
         while(storage.size() == maxSize){
             wait();
         }
-        storage.add(new Object());
+        storage.add(o);
         notifyAll();
     }
 
