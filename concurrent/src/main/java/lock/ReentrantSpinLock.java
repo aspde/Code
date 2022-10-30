@@ -1,7 +1,10 @@
 package lock;
 
 import java.util.concurrent.atomic.AtomicReference;
-//自己实现一个可重入的自旋锁
+
+/**
+ * 自己实现一个可重入的自旋锁
+ */
 public class ReentrantSpinLock {
 
     private final AtomicReference<Thread> owner = new AtomicReference<>();

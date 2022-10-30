@@ -1,7 +1,7 @@
 package thread;
 
 /**
- * 通过interrupt停止线程
+ * 通过interrupt方法停止线程
  */
 public class StopThread implements Runnable {
 

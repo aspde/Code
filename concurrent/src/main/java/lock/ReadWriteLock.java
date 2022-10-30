@@ -2,6 +2,9 @@ package lock;
 
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+/**
+ * 测试读写锁特性
+ */
 public class ReadWriteLock {
 
     private static final ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock(

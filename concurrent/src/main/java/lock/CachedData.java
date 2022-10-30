@@ -1,7 +1,9 @@
 package lock;
 
 import java.util.concurrent.locks.ReentrantReadWriteLock;
-//非常典型的利用锁的降级功能更新缓存
+/**
+ * 非常典型的利用锁的降级功能更新缓存
+ */
 public class CachedData {
 
     Object data;

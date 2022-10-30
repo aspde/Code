@@ -1,9 +1,11 @@
 package lock;
 
-
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * 测试公平锁和非公平锁特性
+ */
 public class FairAndUnfair {
 
 
@@ -25,55 +27,54 @@ public class FairAndUnfair {
         }
     }
 
-}
+    static class Job implements Runnable {
 
+        private final PrintQueue printQueue;
 
-class Job implements Runnable {
-
-    private final PrintQueue printQueue;
-
-    Job(PrintQueue printQueue) {
-        this.printQueue = printQueue;
-    }
-
-    @Override
-    public void run() {
-        System.out.printf("%s: Going to print a job\n", Thread.currentThread().getName());
-        printQueue.printJob();
-        System.out.printf("%s: The document has been printed\n", Thread.currentThread().getName());
-    }
-
-}
-
-
-class PrintQueue {
-
-    private final Lock queueLock = new ReentrantLock(false);
-
-    void printJob() {
-        queueLock.lock();
-
-        try {
-            long duration = (long) (Math.random() * 10000);
-            System.out.printf("%s: PrintQueue: Printing a Job during %d seconds\n",
-                    Thread.currentThread().getName(), (duration / 1000));
-            Thread.sleep(duration);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            queueLock.unlock();
+        Job(PrintQueue printQueue) {
+            this.printQueue = printQueue;
         }
 
-        queueLock.lock();
-        try {
-            long duration = (long) (Math.random() * 10000);
-            System.out.printf("%s: PrintQueue: Printing a Job during %d seconds\n",
-                    Thread.currentThread().getName(), (duration / 1000));
-            Thread.sleep(duration);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            queueLock.unlock();
+        @Override
+        public void run() {
+            System.out.printf("%s: Going to print a job\n", Thread.currentThread().getName());
+            printQueue.printJob();
+            System.out.printf("%s: The document has been printed\n", Thread.currentThread().getName());
+        }
+
+    }
+
+
+    static class PrintQueue {
+
+        private final Lock queueLock = new ReentrantLock(false);
+
+        void printJob() {
+            queueLock.lock();
+
+            try {
+                long duration = (long) (Math.random() * 10000);
+                System.out.printf("%s: PrintQueue: Printing a Job during %d seconds\n",
+                        Thread.currentThread().getName(), (duration / 1000));
+                Thread.sleep(duration);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                queueLock.unlock();
+            }
+
+            queueLock.lock();
+            try {
+                long duration = (long) (Math.random() * 10000);
+                System.out.printf("%s: PrintQueue: Printing a Job during %d seconds\n",
+                        Thread.currentThread().getName(), (duration / 1000));
+                Thread.sleep(duration);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                queueLock.unlock();
+            }
         }
     }
+
 }
