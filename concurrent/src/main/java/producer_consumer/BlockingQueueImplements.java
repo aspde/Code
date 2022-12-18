@@ -23,8 +23,8 @@ public class BlockingQueueImplements {
             }
         };
 
-        new Thread(producer);
-        new Thread(producer);
+        new Thread(producer).start();
+        new Thread(producer).start();
 
         Runnable consumer = () -> {
             while(true){
@@ -36,8 +36,8 @@ public class BlockingQueueImplements {
             }
         };
 
-        new Thread(consumer);
-        new Thread(consumer);
+        new Thread(consumer).start();
+        new Thread(consumer).start();
     }
 
 }

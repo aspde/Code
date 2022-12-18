@@ -11,7 +11,7 @@ public class ConditionBlockingQueue {
 
     private final LinkedList<Object> storage;
 
-    private final int max;
+    private final int maxSize;
 
     private final ReentrantLock lock = new ReentrantLock();
 
@@ -20,7 +20,7 @@ public class ConditionBlockingQueue {
     private final Condition notEmpty = lock.newCondition();
 
     public ConditionBlockingQueue(int size){
-        this.max = size;
+        this.maxSize = size;
         this.storage = new LinkedList<>();
     }
 
@@ -28,7 +28,7 @@ public class ConditionBlockingQueue {
         lock.lock();
         try{
             //因为生产者消费者往往是多线程的，使用while，避免了获取的数据为 null 或抛出异常的情况。
-            while(storage.size() == max){
+            while(storage.size() == maxSize){
                 notFull.await();
             }
             storage.add(o);
