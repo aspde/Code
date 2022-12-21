@@ -3,7 +3,7 @@ package atomic;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.LongAdder;
-/**利用累加器实现线程安全累加，高并发下效率更高**/
+/**利用加法器实现线程安全累加，高并发下效率更高**/
 public class LongAdderDemo {
 
     public static void main(String[] args) throws InterruptedException {
