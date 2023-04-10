@@ -21,8 +21,8 @@
         </plugins>
     </build>
     <modules>
-        <module>concurrent</module>
         <module>basic</module>
+        <module>concurrent</module>
     </modules>
 
     <dependencies>
@@ -38,7 +38,16 @@
             <version>5.9.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>27.1-jre</version>
+        </dependency>
     </dependencies>
-
-    
 </project>
