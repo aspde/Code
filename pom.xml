@@ -21,7 +21,6 @@
         </plugins>
     </build>
     <modules>
-        <module>basic</module>
         <module>concurrent</module>
     </modules>
 
